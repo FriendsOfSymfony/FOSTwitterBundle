@@ -5,15 +5,16 @@
     targetNamespace="http://symfony.com/schema/dic/twitter"
     elementFormDefault="qualified">
 
-    <xsd:element name="twitter">
-        <xsd:complexType>
-            <xsd:attribute name="alias" type="xsd:string" />
-            <xsd:attribute name="file" type="xsd:string" />
-            <xsd:attribute name="enable_security" type="xsd:boolean" />
-            <xsd:attribute name="callback_url" type="xsd:string" />
-            <xsd:attribute name="anywhere_version" type="xsd:string" />
-            <xsd:attribute name="consumer_key" type="xsd:string" />
-            <xsd:attribute name="consumer_secret" type="xsd:string" />
-        </xsd:complexType>
-    </xsd:element>
+    <xsd:element name="config" type="config" />
+    
+    <xsd:complexType name="config">
+        <xsd:attribute name="alias" type="xsd:string" />
+        <xsd:attribute name="file" type="xsd:string" />
+        <xsd:attribute name="enable_security" type="xsd:boolean" />
+        <xsd:attribute name="callback_url" type="xsd:string" />
+        <xsd:attribute name="anywhere_version" type="xsd:string" />
+        <xsd:attribute name="consumer_key" type="xsd:string" />
+        <xsd:attribute name="consumer_secret" type="xsd:string" />
+    </xsd:complexType>
+    
 </xsd:schema>
