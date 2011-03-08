@@ -47,10 +47,8 @@ class Twitter {
     public function getAccessToken()
     {
         /* Check if the oauth_token is old */
-        if($this->session->has('oauth_token'))
-        {
-            if ($this->session->get('oauth_token') && ($this->session->get('oauth_token') !== $this->request->get('oauth_token')))
-            {
+        if ($this->session->has('oauth_token')) {
+            if ($this->session->get('oauth_token') && ($this->session->get('oauth_token') !== $this->request->get('oauth_token'))) {
                 $this->session->remove('oauth_token');
                 return null;
             }
@@ -68,8 +66,7 @@ class Twitter {
         !$this->session->has('oauth_token_secret') ?: $this->session->remove('oauth_token_secret', null);
 
         /* If HTTP response is 200 continue otherwise send to connect page to retry */
-        if (200 == $this->twitter->http_code)
-        {
+        if (200 == $this->twitter->http_code) {
             /* The user has been verified and the access tokens can be saved for future use */
             return $accessToken;
         }
