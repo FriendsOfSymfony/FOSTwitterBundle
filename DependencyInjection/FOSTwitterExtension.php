@@ -20,7 +20,7 @@ class FOSTwitterExtension extends Extension
         $configuration = new Configuration();
         $config = $processor->process($configuration->getConfigTree(), $configs);
 
-        if($config['enable_security']){
+        if ($config['enable_security']) {
             $this->resources['security'] = 'security.xml';
         }
 
