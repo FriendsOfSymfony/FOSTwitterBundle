@@ -36,6 +36,7 @@ Installation
         #app/config/config.yml
         fos_twitter:
             file: %kernel.root_dir%/../vendor/twitteroauth/twitteroauth/twitteroauth.php
+            enable_security: true #set it to false to use only the templating helper
             consumer_key: xxxxxx
             consumer_secret: xxxxxx
             callback_url: http://www.example.com/login_check

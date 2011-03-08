@@ -19,6 +19,7 @@ class Configuration{
 
         $rootNode
             ->scalarNode('file')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('enable_security')->defaultValue(false)->end()
             ->scalarNode('consumer_key')->isRequired()->cannotBeEmpty()->end()
             ->scalarNode('consumer_secret')->isRequired()->cannotBeEmpty()->end()
             ->scalarNode('callback_url')->isRequired()->cannotBeEmpty()->end()

@@ -12,7 +12,6 @@ class FOSTwitterExtension extends Extension
 {
     protected $resources = array(
         'twitter' => 'twitter.xml',
-        'security' => 'security.xml',
     );
 
     public function load(array $configs, ContainerBuilder $container)
@@ -20,6 +19,10 @@ class FOSTwitterExtension extends Extension
         $processor = new Processor();
         $configuration = new Configuration();
         $config = $processor->process($configuration->getConfigTree(), $configs);
+
+        if($config['enable_security']){
+            $this->resources['security'] = 'security.xml';
+        }
 
         $this->loadDefaults($container);
 
