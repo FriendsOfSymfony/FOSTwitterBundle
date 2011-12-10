@@ -32,7 +32,7 @@ class TwitterAnywhereHelper extends Helper
     }
 
     /*
-     * 
+     *
      */
     public function setup($parameters = array(), $name = null)
     {
@@ -44,25 +44,19 @@ class TwitterAnywhereHelper extends Helper
     }
 
     /*
-     * 
+     *
      */
     public function initialize($parameters = array(), $name = null)
     {
-        //convert config array to map
-        $configMap = null;
-        foreach ($this->config as $key => $value){
-            $configMap .= $key.": ".$value.',';
-        }
-
         //convert scripts into lines
         $lines = '';
         foreach ($this->scripts as $script) {
             $lines .= rtrim($script, ';').";\n";
-        }        
+        }
 
         $name = $name ?: 'FOSTwitterBundle::initialize.html.php';
         return $this->templating->render($name, $parameters + array(
-            'configMap'     => $configMap,
+            'configMap'     => $this->config,
             'scripts'       => $lines,
         ));
     }
@@ -76,11 +70,11 @@ class TwitterAnywhereHelper extends Helper
     }
 
     /*
-     * 
+     *
      */
     public function setConfig($key, $value)
     {
-        $this->config[$key] = '"'.$value.'"';
+        $this->config[$key] = $value;
     }
 
     /**

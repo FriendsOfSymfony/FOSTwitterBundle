@@ -1,7 +1,7 @@
 {% autoescape false %}
 <script type="text/javascript">
-    {% if configMap %}
-        twttr.anywhere.config({ {{ configMap }} });
+    {% if configMap is not empty %}
+        twttr.anywhere.config({{ configMap|json_encode }});
     {% endif %}
 
     twttr.anywhere(function (T) {
