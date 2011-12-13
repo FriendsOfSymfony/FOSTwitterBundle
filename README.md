@@ -53,8 +53,6 @@ Installation
 
             #app/config/config.yml
             security:
-                factories:
-                  - "%kernel.root_dir%/../vendor/bundles/FOS/TwitterBundle/Resources/config/security_factories.xml"
                 providers:
                     fos_twitter:
                         id: fos_twitter.auth
@@ -342,9 +340,6 @@ Remember to edit your security.yml to use this provider
 # app/config/security.yml
 
         security:
-            factories:
-                - "%kernel.root_dir%/../vendor/bundles/FOS/TwitterBundle/Resources/config/security_factories.xml"
-
             encoders:
                 Symfony\Component\Security\Core\User\User: plaintext
 

@@ -11,8 +11,17 @@
 
 namespace FOS\TwitterBundle;
 
+use FOS\TwitterBundle\DependencyInjection\Security\Factory\TwitterFactory;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class FOSTwitterBundle extends Bundle
 {
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $extension = $container->getExtension('security');
+        $extension->addSecurityListenerFactory(new TwitterFactory());
+    }
 }
