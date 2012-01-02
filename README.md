@@ -53,7 +53,7 @@ Installation
 
   5. Add the following configuration to use the security component:
 
-            #app/config/config.yml
+            #app/config/security.yml
             security:
                 providers:
                     fos_twitter:
