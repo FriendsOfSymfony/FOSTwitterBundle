@@ -16,10 +16,10 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\Session;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use \TwitterOAuth;
+use TwitterOAuth;
 
-class Twitter {
-
+class Twitter
+{
     private $twitter;
     private $router;
     private $callbackRoute;
