@@ -35,7 +35,7 @@ class FOSTwitterExtension extends Extension
         $this->loadDefaults($container);
 
         if (isset($config['alias'])) {
-            $container->setAlias($config['alias'], 'fos_twitter');
+            $container->setAlias($config['alias'], 'fos_twitter.service');
         }
 
         foreach (array('file', 'consumer_key', 'consumer_secret', 'callback_url', 'anywhere_version') as $attribute) {
