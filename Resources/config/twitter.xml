@@ -8,6 +8,8 @@
         <parameter key="fos_twitter.file">null</parameter>
         <parameter key="fos_twitter.consumer_key">null</parameter>
         <parameter key="fos_twitter.consumer_secret">null</parameter>
+        <parameter key="fos_twitter.access_token">null</parameter>
+        <parameter key="fos_twitter.access_token_secret">null</parameter>
         <parameter key="fos_twitter.callback_url">null</parameter>
         <parameter key="fos_twitter.anywhere_version">1</parameter>
         
@@ -30,6 +32,8 @@
             <file>%fos_twitter.file%</file>
             <argument key="consumer_key">%fos_twitter.consumer_key%</argument>
             <argument key="consumer_secret">%fos_twitter.consumer_secret%</argument>
+            <argument key="oauth_token">%fos_twitter.access_token%</argument>
+            <argument key="oauth_token_secret">%fos_twitter.access_token_secret%</argument>
         </service>
 
         <!-- @Anywhere Templating Helper -->

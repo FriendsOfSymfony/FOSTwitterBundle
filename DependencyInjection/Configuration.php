@@ -43,6 +43,8 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('file')->defaultValue('%kernel.root_dir%/../vendor/twitteroauth/twitteroauth/twitteroauth.php')->end()
                 ->scalarNode('consumer_key')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('consumer_secret')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('access_token')->defaultNull()->end()
+                ->scalarNode('access_token_secret')->defaultNull()->end()
                 ->scalarNode('callback_url')->defaultNull()->end()
                 ->scalarNode('callback_route')->defaultNull()->end()
                 ->scalarNode('anywhere_version')->defaultValue('1')->end()
