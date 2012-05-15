@@ -23,10 +23,10 @@ class TwitterAnywhereExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'twitter_anywhere_setup' => new \Twig_Filter_Method($this, 'renderSetup', array('is_safe' => array('html'))),
-            'twitter_anywhere_initialize' => new \Twig_Filter_Method($this, 'renderInitialize', array('is_safe' => array('html'))),
-            'twitter_anywhere_queue' => new \Twig_Filter_Method($this, 'queue', array('is_safe' => array('html'))),
-            'twitter_anywhere_setConfig' => new \Twig_Filter_Method($this, 'setConfig', array('is_safe' => array('html'))),
+            'twitter_anywhere_setup' => new \Twig_Function_Method($this, 'renderSetup', array('is_safe' => array('html'))),
+            'twitter_anywhere_initialize' => new \Twig_Function_Method($this, 'renderInitialize', array('is_safe' => array('html'))),
+            'twitter_anywhere_queue' => new \Twig_Function_Method($this, 'queue', array('is_safe' => array('html'))),
+            'twitter_anywhere_setConfig' => new \Twig_Function_Method($this, 'setConfig', array('is_safe' => array('html'))),
         );
     }
 
