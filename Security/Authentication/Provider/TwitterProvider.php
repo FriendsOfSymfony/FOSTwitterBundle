@@ -92,7 +92,7 @@ class TwitterProvider implements AuthenticationProviderInterface
         }
 
         try {
-            $user = $this->userProvider->loadUserByUsername($accessToken['screen_name']);
+            $user = $this->userProvider->loadUserByUsername($accessToken['user_id']);
             $this->userChecker->checkPostAuth($user);
         } catch (UsernameNotFoundException $ex) {
             if (!$this->createUserIfNotExists) {
