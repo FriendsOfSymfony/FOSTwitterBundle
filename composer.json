@@ -1,5 +1,5 @@
 {
-    "name": "bitgandtter/twitter-bundle",
+    "name": "friendsofsymfony/twitter-bundle",
     "type": "symfony-bundle",
     "description": "Symfony FOSTwitterBundle",
     "keywords": ["Twitter authentication"],
