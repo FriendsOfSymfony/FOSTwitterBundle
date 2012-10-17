@@ -24,6 +24,7 @@ class Twitter
     private $session;
     private $router;
     private $callbackRoute;
+    private $callbackRouteParams;
     private $callbackURL;
 
     public function __construct(TwitterOAuth $twitter, Session $session, $callbackURL = null)
@@ -33,10 +34,11 @@ class Twitter
         $this->callbackURL = $callbackURL;
     }
 
-    public function setCallbackRoute(RouterInterface $router, $routeName)
+    public function setCallbackRoute(RouterInterface $router, $routeName, $routeParams = array())
     {
         $this->router = $router;
         $this->callbackRoute = $routeName;
+        $this->callbackRouteParams = $routeParams;
     }
 
     public function getLoginUrl()
@@ -104,7 +106,7 @@ class Twitter
         }
 
         if (!empty($this->callbackRoute)) {
-            return $this->router->generate($this->callbackRoute, array(), true);
+            return $this->router->generate($this->callbackRoute, $this->callbackRouteParams, true);
         }
 
         return null;
