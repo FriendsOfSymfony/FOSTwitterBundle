@@ -9,7 +9,6 @@
 
     <xsd:complexType name="config">
         <xsd:attribute name="alias" type="xsd:string" />
-        <xsd:attribute name="file" type="xsd:string" />
         <xsd:attribute name="callback_url" type="xsd:string" />
         <xsd:attribute name="anywhere_version" type="xsd:string" />
         <xsd:attribute name="consumer_key" type="xsd:string" />

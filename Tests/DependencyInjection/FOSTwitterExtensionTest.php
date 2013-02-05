@@ -35,7 +35,6 @@ class TwitterExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $configs = array(
             array(
-                'file' => 'foo',
                 'callback_url' => 'foo',
                 'consumer_key' => 'foo',
                 'consumer_secret' => 'foo',
