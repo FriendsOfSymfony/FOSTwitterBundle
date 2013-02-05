@@ -48,6 +48,10 @@ class Twitter
             $this->twitter->getRequestToken($callbackUrl)
             : $this->twitter->getRequestToken();
 
+        if (!isset($requestToken['oauth_token']) || !isset($requestToken['oauth_token_secret'])) {
+            throw new \RuntimeException('Failed to validate oauth signature and token.');
+        }
+
         /* Save temporary credentials to session. */
         $this->session->set('oauth_token', $requestToken['oauth_token']);
         $this->session->set('oauth_token_secret', $requestToken['oauth_token_secret']);

@@ -122,7 +122,7 @@ To use this provider you will need to add a new service in your config.yml
 
 ``` yaml
 # app/config/config.yml
-
+services:
         my.twitter.user:
             class: Acme\YourBundle\Security\User\Provider\TwitterProvider
             arguments:
