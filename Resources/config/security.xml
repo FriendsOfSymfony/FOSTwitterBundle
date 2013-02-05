@@ -7,6 +7,7 @@
     <services>
         <service id="fos_twitter.auth" class="FOS\TwitterBundle\Security\Authentication\Provider\TwitterProvider" public="false">
             <argument type="service" id="fos_twitter.service"/>
+            <argument type="service" id="validator"/>
         </service>
         
         <service id="fos_twitter.anywhere_auth" class="FOS\TwitterBundle\Security\Authentication\Provider\TwitterAnywhereProvider" public="false">
