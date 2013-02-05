@@ -19,7 +19,7 @@ Installation
           "require": {
             "_some_package": "*",
 
-            "friendsofsymfony/twitter-bundle": "*"
+            "friendsofsymfony/twitter-bundle": "1.1.*"
           }
 
   2. Add this bundle to your application's kernel:
