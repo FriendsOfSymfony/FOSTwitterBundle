@@ -8,10 +8,6 @@
         <service id="fos_twitter.auth" class="FOS\TwitterBundle\Security\Authentication\Provider\TwitterProvider" public="false">
             <argument type="service" id="fos_twitter.service"/>
         </service>
-        
-        <service id="fos_twitter.anywhere_auth" class="FOS\TwitterBundle\Security\Authentication\Provider\TwitterAnywhereProvider" public="false">
-            <argument>%fos_twitter.consumer_secret%</argument>
-        </service>
 
         <service id="fos_twitter.security.authentication.listener"
                  class="FOS\TwitterBundle\Security\Firewall\TwitterListener"

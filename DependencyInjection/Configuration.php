@@ -47,7 +47,6 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('access_token_secret')->defaultNull()->end()
                 ->scalarNode('callback_url')->defaultNull()->end()
                 ->scalarNode('callback_route')->defaultNull()->end()
-                ->scalarNode('anywhere_version')->defaultValue('1')->end()
                 ->scalarNode('alias')->defaultNull()->end()
             ->end()
         ;
