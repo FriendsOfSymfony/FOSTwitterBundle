@@ -124,7 +124,7 @@ To use this provider you will need to add a new service in your config.yml
 # app/config/config.yml
 services:
         my.twitter.user:
-            class: Acme\YourBundle\Security\User\Provider\TwitterProvider
+            class: Acme\YourBundle\Security\User\Provider\TwitterUserProvider
             arguments:
                 twitter_oauth: "@fos_twitter.api"
                 userManager: "@fos_user.user_manager"
@@ -193,11 +193,11 @@ Also you would need some new properties and methods in your User model class.
         }
 ```
         
-And this is the TwitterProvider class
+And this is the TwitterUserProvider class
 
 ``` php
 <?php
-// src/Acme/YourBundle/Security/User/Provider/TwitterProvider.php
+// src/Acme/YourBundle/Security/User/Provider/TwitterUserProvider.php
 
 
 namespace Acme\YourBundle\Security\User\Provider;
@@ -211,7 +211,7 @@ use \TwitterOAuth;
 use FOS\UserBundle\Entity\UserManager;
 use Symfony\Component\Validator\Validator;
 
-class TwitterProvider implements UserProviderInterface
+class TwitterUserProvider implements UserProviderInterface
 {
     /** 
      * @var \Twitter
@@ -243,13 +243,12 @@ class TwitterProvider implements UserProviderInterface
     {
         $user = $this->findUserByTwitterId($username);
 
-
-         $this->twitter_oauth->setOAuthToken( $this->session->get('access_token') , $this->session->get('access_token_secret'));
+        $this->twitter_oauth->setOAuthToken($this->session->get('access_token'), $this->session->get('access_token_secret'));
 
         try {
-             $info = $this->twitter_oauth->get('account/verify_credentials');
+            $info = $this->twitter_oauth->get('account/verify_credentials');
         } catch (Exception $e) {
-             $info = null;
+            $info = null;
         }
 
         if (!empty($info)) {
@@ -261,7 +260,6 @@ class TwitterProvider implements UserProviderInterface
             }
 
             $username = $info->screen_name;
-
 
             $user->setTwitterID($info->id);
             $user->setTwitterUsername($username);
@@ -276,7 +274,6 @@ class TwitterProvider implements UserProviderInterface
         }
 
         return $user;
-
     }
 
     public function refreshUser(UserInterface $user)
