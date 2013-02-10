@@ -14,39 +14,27 @@ database based solution provided by FOSUserBundle.
 Installation
 ============
 
-  1. Add this bundle and Abraham Williams' Twitter library to your project as Git submodules:
+  1. Add this bundle and Abraham Williams' Twitter library to your project as composer references:
 
-          $ git submodule add git://github.com/FriendsOfSymfony/FOSTwitterBundle.git vendor/bundles/FOS/TwitterBundle
-          $ git submodule add git://github.com/kertz/twitteroauth.git vendor/twitteroauth
+          "kertz/twitteroauth": "dev-master",
+          "friendsofsymfony/twitter-bundle": "dev-master"
 
 >**Note:** The kertz/twitteroauth is patched to be compatible with FOSTwitterBundle
 
-  2. Register the namespace `FOS` to your project's autoloader bootstrap script:
+  2. Add this bundle to your application's kernel:
 
-          //app/autoload.php
-          $loader->registerNamespaces(array(
-                // ...
-                'FOS'    => __DIR__.'/../vendor/bundles',
-                // ...
-          ));
+          $bundles = array(
+            ...
+            new FOS\TwitterBundle\FOSTwitterBundle(),
+            ...
+          );
 
-  3. Add this bundle to your application's kernel:
 
-          //app/AppKernel.php
-          public function registerBundles()
-          {
-              return array(
-                  // ...
-                  new FOS\TwitterBundle\FOSTwitterBundle(),
-                  // ...
-              );
-          }
-
-  4. Configure the `twitter` service in your YAML configuration:
+  3. Configure the `twitter` service in your YAML configuration:
 
             #app/config/config.yml
             fos_twitter:
-                file: %kernel.root_dir%/../vendor/twitteroauth/twitteroauth/twitteroauth.php
+                file: %kernel.root_dir%/../vendor/kertz/twitteroauth/twitteroauth/twitteroauth.php
                 consumer_key: xxxxxx
                 consumer_secret: xxxxxx
                 callback_url: http://www.example.com/login_check
@@ -74,6 +62,7 @@ Using Twitter @Anywhere
 -----------------------
 
 >**Note:** If you want the Security Component to work with Twitter @Anywhere, you need to send a request to the configured check path upon successful client authentication (see https://gist.github.com/1021384 for a sample configuration).
+>**Note:** Note that using twitter @Anywhere is deprecated.
 
 A templating helper is included for using Twitter @Anywhere. To use it, first
 call the `->setup()` method toward the top of your DOM:
