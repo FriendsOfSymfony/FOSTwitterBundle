@@ -13,6 +13,8 @@
         <xsd:attribute name="anywhere_version" type="xsd:string" />
         <xsd:attribute name="consumer_key" type="xsd:string" />
         <xsd:attribute name="consumer_secret" type="xsd:string" />
+        <!-- FOR BC, TO BE REMOVED -->
+        <xsd:attribute name="file" type="xsd:string" />
     </xsd:complexType>
 
 </xsd:schema>
