@@ -14,7 +14,7 @@ database based solution provided by FOSUserBundle.
 Installation
 ============
 
-  1. Add this bundle and Abraham Williams' Twitter library to your project as Git submodules:
+  1. Add this bundle to your project's ```composer.json```  :
 
           "require": {
             "_some_package": "*",
