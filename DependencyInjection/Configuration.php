@@ -40,7 +40,7 @@ class Configuration implements ConfigurationInterface
                 })
             ->end()
             ->children()
-                ->scalarNode('file')->defaultValue('%kernel.root_dir%/../vendor/twitteroauth/twitteroauth/twitteroauth.php')->end()
+                ->scalarNode('file')->info('DEPRECATED. To be removed.')->end()
                 ->scalarNode('consumer_key')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('consumer_secret')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('access_token')->defaultNull()->end()

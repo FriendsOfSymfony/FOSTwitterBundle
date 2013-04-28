@@ -14,23 +14,15 @@ database based solution provided by FOSUserBundle.
 Installation
 ============
 
-  1. Add this bundle and Abraham Williams' Twitter library to your project as Git submodules:
+  1. Add this bundle to your project's ```composer.json```  :
 
-          $ git submodule add git://github.com/FriendsOfSymfony/FOSTwitterBundle.git vendor/bundles/FOS/TwitterBundle
-          $ git submodule add git://github.com/kertz/twitteroauth.git vendor/twitteroauth
+          "require": {
+            "_some_package": "*",
 
->**Note:** The kertz/twitteroauth is patched to be compatible with FOSTwitterBundle
+            "friendsofsymfony/twitter-bundle": "1.1.*"
+          }
 
-  2. Register the namespace `FOS` to your project's autoloader bootstrap script:
-
-          //app/autoload.php
-          $loader->registerNamespaces(array(
-                // ...
-                'FOS'    => __DIR__.'/../vendor/bundles',
-                // ...
-          ));
-
-  3. Add this bundle to your application's kernel:
+  2. Add this bundle to your application's kernel:
 
           //app/AppKernel.php
           public function registerBundles()
@@ -42,11 +34,10 @@ Installation
               );
           }
 
-  4. Configure the `twitter` service in your YAML configuration:
+  3. Configure the `twitter` service in your YAML configuration:
 
             #app/config/config.yml
             fos_twitter:
-                file: %kernel.root_dir%/../vendor/twitteroauth/twitteroauth/twitteroauth.php
                 consumer_key: xxxxxx
                 consumer_secret: xxxxxx
                 callback_url: http://www.example.com/login_check

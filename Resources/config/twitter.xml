@@ -5,7 +5,6 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="fos_twitter.file">null</parameter>
         <parameter key="fos_twitter.consumer_key">null</parameter>
         <parameter key="fos_twitter.consumer_secret">null</parameter>
         <parameter key="fos_twitter.access_token">null</parameter>
@@ -29,7 +28,6 @@
 
         <!-- This is the base API connect service, injected to the wrapper service -->
         <service id="fos_twitter.api" class="%fos_twitter.api.class%">
-            <file>%fos_twitter.file%</file>
             <argument key="consumer_key">%fos_twitter.consumer_key%</argument>
             <argument key="consumer_secret">%fos_twitter.consumer_secret%</argument>
             <argument key="oauth_token">%fos_twitter.access_token%</argument>

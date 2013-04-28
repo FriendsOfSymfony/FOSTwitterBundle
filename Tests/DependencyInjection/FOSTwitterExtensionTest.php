@@ -35,7 +35,6 @@ class TwitterExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $configs = array(
             array(
-                'file' => 'foo',
                 'callback_url' => 'foo',
                 'consumer_key' => 'foo',
                 'consumer_secret' => 'foo',
@@ -55,7 +54,7 @@ class TwitterExtensionTest extends \PHPUnit_Framework_TestCase
         $container
             ->expects($this->once())
             ->method('setAlias')
-            ->with($alias, 'fos_twitter');
+            ->with($alias, 'fos_twitter.service');
 
         $configs[] = array('alias' => $alias);
 
