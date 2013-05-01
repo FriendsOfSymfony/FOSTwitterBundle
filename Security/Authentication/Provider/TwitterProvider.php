@@ -74,7 +74,7 @@ class TwitterProvider implements AuthenticationProviderInterface
         } catch (AuthenticationException $failed) {
             throw $failed;
         } catch (\Exception $failed) {
-            throw new AuthenticationException($failed->getMessage(), null, $failed->getCode(), $failed);
+            throw new AuthenticationException($failed->getMessage(), $failed->getCode(), $failed);
         }
 
         throw new AuthenticationException('The Twitter user could not be retrieved from the session.');
