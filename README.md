@@ -1,3 +1,9 @@
+DEPRECATED
+==========
+
+See [HWIOAuthBundle](https://github.com/hwi/HWIOAuthBundle) instead
+-------------------------------------------------------------------
+
 Introduction
 ============
 
