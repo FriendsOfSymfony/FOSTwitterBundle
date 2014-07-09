@@ -20,21 +20,23 @@ database based solution provided by FOSUserBundle.
 Installation
 ============
 
-  1. Add this bundle and Abraham Williams' Twitter library to your project as Git submodules:
+  1. Add FOSTwitterBundle in your composer.json:
 
-          $ git submodule add git://github.com/FriendsOfSymfony/FOSTwitterBundle.git vendor/bundles/FOS/TwitterBundle
-          $ git submodule add git://github.com/kertz/twitteroauth.git vendor/twitteroauth
+    ```js
+    {
+        "require": {
+            "friendsofsymfony/twitter-bundle": "*"
+        }
+    }
+    ```
 
->**Note:** The kertz/twitteroauth is patched to be compatible with FOSTwitterBundle
+  2. Now tell composer to download the bundle by running the command:
 
-  2. Register the namespace `FOS` to your project's autoloader bootstrap script:
+    ``` bash
+    $ php composer.phar update friendsofsymfony/twitter-bundle
+    ```
 
-          //app/autoload.php
-          $loader->registerNamespaces(array(
-                // ...
-                'FOS'    => __DIR__.'/../vendor/bundles',
-                // ...
-          ));
+    Composer will install the bundle to your project's `vendor/friendsofsymfony` directory.
 
   3. Add this bundle to your application's kernel:
 
@@ -52,7 +54,7 @@ Installation
 
             #app/config/config.yml
             fos_twitter:
-                file: %kernel.root_dir%/../vendor/twitteroauth/twitteroauth/twitteroauth.php
+                file: %kernel.root_dir%/../vendor/kertz/twitteroauth/twitteroauth/twitteroauth.php
                 consumer_key: xxxxxx
                 consumer_secret: xxxxxx
                 callback_url: http://www.example.com/login_check
@@ -78,6 +80,8 @@ Installation
 
 Using Twitter @Anywhere
 -----------------------
+
+>**Warning:** @Anywhere is not available anymore. See https://dev.twitter.com/docs/anywhere/welcome for more informations.
 
 >**Note:** If you want the Security Component to work with Twitter @Anywhere, you need to send a request to the configured check path upon successful client authentication (see https://gist.github.com/1021384 for a sample configuration).
 
