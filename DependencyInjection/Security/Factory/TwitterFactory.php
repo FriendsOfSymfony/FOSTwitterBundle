@@ -20,7 +20,6 @@ class TwitterFactory extends AbstractFactory
 {
     public function __construct()
     {
-        $this->addOption('use_twitter_anywhere', false);
         $this->addOption('create_user_if_not_exists', false);
     }
 
@@ -41,25 +40,6 @@ class TwitterFactory extends AbstractFactory
 
     protected function createAuthProvider(ContainerBuilder $container, $id, $config, $userProviderId)
     {
-        // configure auth with Twitter Anywhere
-        if (true === $config['use_twitter_anywhere']) {
-            if (isset($config['provider'])) {
-                $authProviderId = 'fos_twitter.anywhere_auth.'.$id;
-
-                $container
-                    ->setDefinition($authProviderId, new DefinitionDecorator('fos_twitter.anywhere_auth'))
-                    ->addArgument(new Reference($userProviderId))
-                    ->addArgument(new Reference('security.user_checker'))
-                    ->addArgument($config['create_user_if_not_exists'])
-                ;
-
-                return $authProviderId;
-            }
-
-            // no user provider
-            return 'fos_twitter.anywhere_auth';
-        }
-
         // configure auth for standard Twitter API
         // with user provider
         if (isset($config['provider'])) {
@@ -82,13 +62,6 @@ class TwitterFactory extends AbstractFactory
     protected function createListener($container, $id, $config, $userProvider)
     {
         $listenerId = parent::createListener($container, $id, $config, $userProvider);
-
-        if ($config['use_twitter_anywhere']) {
-            $container
-                ->getDefinition($listenerId)
-                ->addMethodCall('setUseTwitterAnywhere', array(true))
-            ;
-        }
 
         return $listenerId;
     }
