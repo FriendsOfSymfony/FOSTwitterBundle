@@ -42,6 +42,10 @@ class TwitterListener extends AbstractAuthenticationListener
             return $this->authenticationManager->authenticate(TwitterAnywhereToken::createUnauthenticated(substr($identity, 0, $pos), substr($identity, $pos + 1)));
         }
 
+        if ($request->query->has('denied')) {
+            throw new AuthenticationException('You must authorize us to connect with your Twitter account');
+        }
+
         return $this->authenticationManager->authenticate(new TwitterUserToken($request->query->get('oauth_token'), $request->query->get('oauth_verifier')));
     }
 }
