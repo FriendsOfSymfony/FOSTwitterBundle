@@ -33,6 +33,11 @@ class Twitter
         $this->callbackURL = $callbackURL;
     }
 
+    public function setCallBackURL($callbackURL)
+    {
+	$this->callbackURL = $callbackURL;
+    }
+
     public function setCallbackRoute(RouterInterface $router, $routeName)
     {
         $this->router = $router;
