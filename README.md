@@ -52,7 +52,7 @@ Installation
 
             #app/config/config.yml
             fos_twitter:
-                file: %kernel.root_dir%/../vendor/twitteroauth/twitteroauth/twitteroauth.php
+                file: %kernel.root_dir%/../vendor/kertz/twitteroauth/twitteroauth/twitteroauth.php
                 consumer_key: xxxxxx
                 consumer_secret: xxxxxx
                 callback_url: http://www.example.com/login_check
