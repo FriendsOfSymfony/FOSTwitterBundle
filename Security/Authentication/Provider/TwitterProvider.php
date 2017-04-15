@@ -22,9 +22,11 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\Validator\ValidatorInterface;
 
 use FOS\TwitterBundle\Security\Authentication\Token\TwitterUserToken;
 use FOS\TwitterBundle\Services\Twitter;
+use FOS\UserBundle\Security\Authentication\Token\IncompleteUserToken;
 
 class TwitterProvider implements AuthenticationProviderInterface
 {
@@ -32,8 +34,9 @@ class TwitterProvider implements AuthenticationProviderInterface
     private $userProvider;
     private $userChecker;
     private $createUserIfNotExists;
+    private $validator;
 
-    public function __construct(Twitter $twitter, UserProviderInterface $userProvider = null, UserCheckerInterface $userChecker = null, $createUserIfNotExists = false)
+    public function __construct(Twitter $twitter, ValidatorInterface $validator, UserProviderInterface $userProvider = null, UserCheckerInterface $userChecker = null, $createUserIfNotExists = false)
     {
         if (null !== $userProvider && null === $userChecker) {
             throw new \InvalidArgumentException('$userChecker cannot be null, if $userProvider is not null.');
@@ -47,6 +50,7 @@ class TwitterProvider implements AuthenticationProviderInterface
         $this->userProvider = $userProvider;
         $this->userChecker = $userChecker;
         $this->createUserIfNotExists = $createUserIfNotExists;
+        $this->validator = $validator;
     }
 
     public function authenticate(TokenInterface $token)
@@ -106,6 +110,13 @@ class TwitterProvider implements AuthenticationProviderInterface
             throw new \RuntimeException('User provider did not return an implementation of user interface.');
         }
 
-        return new TwitterUserToken($user, null, $user->getRoles());
+        $errors = $this->validator->validate($user, array('Profile'));
+
+        if (count($errors) > 0) {
+            $user->setIncomplete(true);
+            return new IncompleteUserToken('', $user, $user->getRoles());
+        } else {
+            return new TwitterUserToken($user, null, $user->getRoles());
+        }
     }
 }
